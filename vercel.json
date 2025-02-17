@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          ".env",
+          "node_modules/**"
+        ],
+        "runtime": "edge",
+        "maxDuration": 60,
+        "memory": 1024
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "server.js",
+      "methods": ["GET", "POST"]
+    }
+  ]
+}
